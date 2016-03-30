@@ -8,23 +8,25 @@ output: html_document
 This is a code book that describes the variables, the data, and any transformations or work that was performed to clean up the data.
 
 DATA DICTIONARY
-======================================================================================
-activity
+  
+#### activity  
      1 WALKING
      2 WALKING_UPSTAIRS
      3 WALKING_DOWNSTAIRS
      4 SITTING
      5 STANDING
-     6 LAYING
-======================================================================================
-dataSet
-     Identifier for the test and train datasets before the two sets were merged
-     1 test
-     2 train
-======================================================================================
-
-
-Below is the data set description as found at 
+     6 LAYING  
+  
+#### dataSet  
+ Column name changes
+     All variable names are set to lower case, the hyphens are removed and    
+     the parenthesis after the function name are removed.
+     
+     Example: tBodyAcc-mean()-X looks like tBodyAccmean-X
+ 
+     
+======================================================================================  
+Below is the data set description as found at  
 <http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones>
 ======================================================================================
 

@@ -65,13 +65,17 @@ run_analysis <- function() {
      ##  Group on subjectcode and activitylabel and average the data on the groups
      finalset <- aggregate(fulldataset[,2:67], list(fulldataset$subjectcode, fulldataset$activitylabel), mean)
      
+     ## clean up column names
+     ## Update subject and activity columns
      colnames(finalset)[1:2] <- c("subject","activity")
      
+     ## remove extraneous characters from measures column names
      names(finalset)[1:length(finalset)] <- tolower(names(finalset)[1:length(finalset)])
      colnames(finalset) <- sub("-","",names(finalset))
      colnames(finalset) <- sub("\\(\\)","",names(finalset))
      colnames(finalset) <- sub("-","",names(finalset))
      
+     ## output the final results to a text file in the working directory
      write.table(finalset, file = "Assignment3.txt")
 
 }
