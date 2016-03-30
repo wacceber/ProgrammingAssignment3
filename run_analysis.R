@@ -31,7 +31,7 @@ run_analysis <- function() {
      ## create a vector with the column indexes
      ## (remove)subcols <- c(grep("mean", names(testdat2)), grep("std", names(testdat2)))
      testdat <- testdat[c(grep("mean\\(|std", names(testdat)))]
-     traindat <- traindat[c(grep("mean\\(|std", names(testdat)))]
+     traindat <- traindat[c(grep("mean\\(|std", names(traindat)))]
       
      ## read 2 label files that contain the activity codes    
      ## 1. UCI HAR Dataset\test\y_test
@@ -56,14 +56,22 @@ run_analysis <- function() {
      ## Extract the subject data
      testsubjectdatset <- read.table("UCI HAR Dataset\\test\\subject_test.txt")
      trainsubjectdatset <- read.table("UCI HAR Dataset\\train\\subject_train.txt")
+     testdat$subjectcode <- c(testsubjectdatset$V1) 
+     traindat$subjectcode <- c(trainsubjectdatset$V1)
           
       ##  merge the test and train data sets
-     # testtrainmerge <- merge(x = testdat, y = traindat, all = TRUE)
-    
-     # intersect(names(traindat), names(testdat))
-     # variables
-     # activitylabels
-     head(traindat, n=1)
-          # c(dim(testdat), dim(testactivitydat), dim(traindat), dim(trainactivitydat))
-          # head(testsubjectdat, n=25)
+     fulldataset <- union(testdat, traindat)
+     
+     ##  Group on subjectcode and activitylabel and average the data on the groups
+     finalset <- aggregate(fulldataset[,2:67], list(fulldataset$subjectcode, fulldataset$activitylabel), mean)
+     
+     colnames(finalset)[1:2] <- c("subject","activity")
+     
+     names(finalset)[1:length(finalset)] <- tolower(names(finalset)[1:length(finalset)])
+     colnames(finalset) <- sub("-","",names(finalset))
+     colnames(finalset) <- sub("\\(\\)","",names(finalset))
+     colnames(finalset) <- sub("-","",names(finalset))
+     
+     write.table(finalset, file = "Assignment3.txt")
+
 }
