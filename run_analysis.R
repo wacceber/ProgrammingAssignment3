@@ -7,7 +7,9 @@
 ### From the data set in step 4, creates a second, independent tidy data set 
 ###   with the average of each variable for each activity and each subject.
 
-run_analysis <- function() {
+
+
+     library(dplyr)
      ## read 2 data files     
      ## 1. UCI HAR Dataset\test\X_test
      ## 2. UCI HAR Dataset\train\X_train
@@ -60,7 +62,7 @@ run_analysis <- function() {
      traindat$subjectcode <- c(trainsubjectdatset$V1)
           
       ##  merge the test and train data sets
-     fulldataset <- union(testdat, traindat)
+     fulldataset <- rbind(testdat, traindat)
      
      ##  Group on subjectcode and activitylabel and average the data on the groups
      finalset <- aggregate(fulldataset[,2:67], list(fulldataset$subjectcode, fulldataset$activitylabel), mean)
@@ -75,7 +77,9 @@ run_analysis <- function() {
      colnames(finalset) <- sub("\\(\\)","",names(finalset))
      colnames(finalset) <- sub("-","",names(finalset))
      
-     ## output the final results to a text file in the working directory
-     write.table(finalset, file = "Assignment3.txt")
+     ## output the final results 
+     ## to a text file in the working directory
+     write.table(finalset, file = "tidy_data.txt", row.name=FALSE)
+     
+     
 
-}
