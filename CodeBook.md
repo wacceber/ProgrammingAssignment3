@@ -45,8 +45,7 @@ Below is the data set description as found at
 
 ***
 
-Abstract: Human A
-ctivity Recognition database built from the recordings of 30 subjects performing activities of daily living (ADL) while carrying a waist-mounted smartphone with embedded inertial sensors.
+Abstract: Human Activity Recognition database built from the recordings of 30 subjects performing activities of daily living (ADL) while carrying a waist-mounted smartphone with embedded inertial sensors.
 
 Data Set Characteristics:  
 
