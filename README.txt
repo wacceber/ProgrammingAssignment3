@@ -24,13 +24,9 @@ This repository contains the following files:
 
 
 To execute the script:
-1. Place run_analysis.R file in the same directory that contains the UCI HAR Dataset folder.
-1. Set the working directory of R to the directory that contains the UCI HAR Dataset folder and run_analysis.R file.
-3. In the console, enter the following command: 
-     source("run_analysis.R")
-4. In the console, enter the following command:
-     run_analysis()
-The result of the script is an text file called Assignment3 saved to the working directory.
+
+1. Set the working directory of R to the directory that contains the UCI HAR Dataset folder.
+The result of the script is an text file called tidy_data.txt saved in the working directory.
 
 ==================================================================
 The steps taken to produce the final output are as follows:
